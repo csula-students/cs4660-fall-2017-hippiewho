@@ -120,7 +120,7 @@ class AdjacencyList(object):
 
     def remove_node(self, node):
         if node in self.adjacency_list:
-            for n, edges in self.adjacency_list.items():
+            for n in self.adjacency_list:
                 self.adjacency_list[n] = []
             return True
         else:
