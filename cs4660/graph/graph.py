@@ -173,11 +173,10 @@ class AdjacencyMatrix(object):
             self.nodes.append(node)
             for i in self.adjacency_matrix:
                 i.append(None)
-            self.adjacency_matrix.append([None] * len(self.nodes))
+            #self.adjacency_matrix.append([None] * len(self.nodes))
             return True
         else:
             return False
-        
 
     def remove_node(self, node):
         if node in self.nodes:
