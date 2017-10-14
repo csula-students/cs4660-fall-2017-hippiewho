@@ -9,7 +9,7 @@ to f1f131f647621a4be7c71292e79613f9
 TODO: implement BFS
 TODO: implement Dijkstra utilizing the path with highest effect number
 """
-
+import Queue as q
 import json
 
 # http lib import for Python 2 and 3: alternative 4
@@ -50,8 +50,43 @@ def __json_request(target_url, body):
     response = json.load(urlopen(req, jsondataasbytes))
     return response
 
+def bfs(queue, visited):
+    room = queue.get()
+    for r in room["neighbors"]:
+        if r["id"] == "f1f131f647621a4be7c71292e79613f9":
+            print "found"
+            return visited
+        if r['id'] not in visited:
+            queue.put(get_state(r["id"]))
+            visited.append(r['id'])
+            bfs(queue, visited)
+    
+
 if __name__ == "__main__":
     # Your code starts here
     empty_room = get_state('7f3dc077574c013d98b2de8f735058b4')
-    print(empty_room)
-    print(transition_state(empty_room['id'], empty_room['neighbors'][0]['id']))
+    queue = q.Queue()
+    visited = []
+    # print(empty_room)
+    # print(transition_state(empty_room['id'], empty_room['neighbors'][5]['id']))
+    
+    queue.put(empty_room)
+    visited.append(empty_room["id"])
+
+    for r in empty_room["neighbors"]:
+        queue.put(get_state(r["id"]))
+
+    room = queue.get()
+    visited.append(room["id"])
+    
+    for r in room["neighbors"]:
+        if r['id'] not in visited:
+            queue.put(get_state(r["id"]))
+            visited.append(r['id'])
+    bfs(queue, visited)
+    
+
+# for q in range(0, queue.qsize()):
+#     print (queue.get()["id"])
+        
+
