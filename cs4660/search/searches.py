@@ -1,6 +1,7 @@
 """
 Searches module defines all different search algorithms
 """
+import Queue
 
 def bfs(graph, initial_node, dest_node):
     """
@@ -8,7 +9,8 @@ def bfs(graph, initial_node, dest_node):
     uses graph to do search from the initial_node to dest_node
     returns a list of actions going from the initial node to dest_node
     """
-    pass
+    frontier = Queue.Queue()
+
 
 def dfs(graph, initial_node, dest_node):
     """
@@ -16,6 +18,17 @@ def dfs(graph, initial_node, dest_node):
     uses graph to do search from the initial_node to dest_node
     returns a list of actions going from the initial node to dest_node
     """
+    visited = []
+    visited.append(initial_node)
+    path = []
+    path.append(initial_node)
+    
+    while visited:
+
+    
+
+def dfs(graph, current_node):
+    
     pass
 
 def dijkstra_search(graph, initial_node, dest_node):
