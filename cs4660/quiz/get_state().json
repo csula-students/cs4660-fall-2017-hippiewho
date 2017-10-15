@@ -1,0 +1,114 @@
+{
+    "id": "7f3dc077574c013d98b2de8f735058b4",
+    "location":
+    {
+        "y": 0.31283405667293,
+        "x": 0.410506773944317,
+        "name": "Empty Room"
+    },    "neighbors":
+    [
+        {
+            "neighbors":
+            [
+
+            ],
+            "id": "44dfaae131fa9d0a541c3eb790b57b00",
+            "location":
+            {
+                "y": 0.055817029657342,
+                "x": 0.413954024429462,
+                "name": "Dire Tombs"
+            }
+        },
+        {
+            "neighbors":
+            [
+
+            ],
+            "id": "547c87c401822417fe069546143de4bb",
+            "location":
+            {
+                "y": 0.455749741252522,
+                "x": 0.03400947691621,
+                "name": "Hall Way"
+            }
+        },
+        {
+            "neighbors":
+            [
+
+            ],
+            "id": "0d1d67f3e6bf24e4c2acff975025a497",
+            "location":
+            {
+                "y": 0.534140487473176,
+                "x": 0.966347533596522,
+                "name": "Hall Way"
+            }
+        },        {
+            "neighbors":
+            [
+
+            ],
+            "id": "ef296fb452b14eb1cf579fa69d0fe7da",
+            "location":
+            {
+                "y": 0.762283610952068,
+                "x": 0.148174086410217,
+                "name": "Empty Room"
+            }
+        },
+        {
+            "neighbors":
+            [
+
+            ],
+            "id": "bc59dd94f397de7cc7eeca02752d7a15",
+            "location":
+            {
+                "y": 0.271518303248297,
+                "x": 0.067900115928687,
+                "name": "Empty Room"
+            }
+        },
+        {
+            "neighbors":
+            [
+
+            ],
+            "id": "ef296fb452b14eb1cf579fa69d0fe7da",
+            "location":
+            {
+                "y": 0.762283610952068,
+                "x": 0.148174086410217,
+                "name": "Empty Room"
+            }
+        },
+        {
+            "neighbors":
+            [
+
+            ],
+            "id": "2b04cd8a31bfd09aa663787fbb150265",
+            "location":
+            {
+                "y": 0.88785131149306,
+                "x": 0.272004641102214,
+                "name": "Room with cage"
+            }
+        },
+        {
+            "neighbors":
+            [
+
+            ],
+            "id": "dcb4565202e804f1f27120dabb32bd87",
+            "location":
+            {
+                "y": 0.97217634152161,
+                "x": 0.891820263891948,
+                "name": "Empty Room"
+            }
+        }
+    ]
+}

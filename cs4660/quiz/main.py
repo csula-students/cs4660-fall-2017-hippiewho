@@ -9,8 +9,10 @@ to f1f131f647621a4be7c71292e79613f9
 TODO: implement BFS
 TODO: implement Dijkstra utilizing the path with highest effect number
 """
-import Queue as q
+
 import json
+import codecs
+import Queue
 
 # http lib import for Python 2 and 3: alternative 4
 try:
@@ -50,43 +52,117 @@ def __json_request(target_url, body):
     response = json.load(urlopen(req, jsondataasbytes))
     return response
 
-def bfs(queue, visited):
-    room = queue.get()
-    for r in room["neighbors"]:
-        if r["id"] == "f1f131f647621a4be7c71292e79613f9":
-            print "found"
-            return visited
-        if r['id'] not in visited:
-            queue.put(get_state(r["id"]))
-            visited.append(r['id'])
-            bfs(queue, visited)
+def bfs(start_id, end_id):
+    visited = []
+    edges = {}
+    queue = Queue.Queue()
+    parents = {}
+
+    queue.put(start_id);
+    visited.append(start_id)
+
+    while not queue.empty():
+        current_room_id = queue.get()
+        current_room_state = get_state(current_room_id)
+
+        for neighbor in current_room_state['neighbors']:
+            neighbor_id = neighbor["id"]
+
+            if neighbor_id not in visited:
+                edge = transition_state(current_room_id, neighbor_id)
+                edges[neighbor_id] = edge
+                visited.append(neighbor_id)
+                parents[neighbor_id] = current_room_id
+
+                if neighbor_id != end_id:
+                    queue.put(neighbor_id)
+        
+    final_path = []
+    current = end_id
+    final_path.append(current)
+
+    while current in parents:
+        final_path.append(parents[current])
+        current = parents[current]
+
+
+    final_path.reverse()
+    print_path(final_path, end_id)
+
+
+def dijkstra(start_id, end_id):
+    # List of visited nodes
+    visited = []
+    # Edges of neigbors - { node_to : {node_from , current_weight) }
+    edges = {}
+    queue = Queue.PriorityQueue()
     
+    queue.put(start_id)
+
+    while not queue.empty():
+        current_room_state = get_state(queue.get())
+        current_room_id = current_room_state["id"]
+        current_cost = 0
+
+        if current_room_id in edges:
+            current_cost = edges[current_room_id][2]
+
+        for neighbor in current_room_state["neighbors"]:
+            neighbor_id = neighbor["id"]
+            if neighbor_id not in visited:
+                edge_state = transition_state(current_room_id, neighbor_id)
+                effect_transition = edge_state["event"]["effect"]
+
+                queue.put(neighbor_id)
+                visited.append(neighbor_id)
+                
+                if neighbor_id not in edges:
+                    edges[neighbor_id] = (current_room_id, neighbor_id, (effect_transition + current_cost))
+                elif neighbor_id in edges and (effect_transition + current_cost) > edges[neighbor_id][1]:
+                    edges[neighbor_id] = (current_room_id, neighbor_id, (effect_transition + current_cost))
+
+    current = end_id
+    final_paths = []    
+    final_paths.append(current)
+
+    while (current != start_id) and edges[current] :
+        current = edges[current][0]
+        final_paths.append(current)
+
+    final_paths.reverse()
+
+    print_path(final_paths, end_id)
+
+
+def print_path(path, end_id):
+    damage = 0
+
+    for i in range(0 , len(path) - 1):
+        from_id = path[i]
+        to_id   = path[i + 1]
+
+        current_room = get_state(from_id)
+        current_transition_state = transition_state(from_id, to_id)
+        
+        name_of_current_room = current_room["location"]["name"]
+        name_of_next_room = current_transition_state['action']
+        effect = current_transition_state['event']['effect']
+        description = current_transition_state['event']['description']
+
+        damage += effect
+
+        print("Moved From %s to %s. %s and caused %i damage." % (name_of_current_room, name_of_next_room, description, effect))
+        
+    print("\nTotal Damage Taken: %i \n" % damage)
 
 if __name__ == "__main__":
     # Your code starts here
-    empty_room = get_state('7f3dc077574c013d98b2de8f735058b4')
-    queue = q.Queue()
-    visited = []
+    # empty_room = get_state('7f3dc077574c013d98b2de8f735058b4')
     # print(empty_room)
-    # print(transition_state(empty_room['id'], empty_room['neighbors'][5]['id']))
+    # print(transition_state(empty_room['id'], empty_room['neighbors'][0]['id']))
+    start_id = '7f3dc077574c013d98b2de8f735058b4'
+    end_id = 'f1f131f647621a4be7c71292e79613f9'
     
-    queue.put(empty_room)
-    visited.append(empty_room["id"])
-
-    for r in empty_room["neighbors"]:
-        queue.put(get_state(r["id"]))
-
-    room = queue.get()
-    visited.append(room["id"])
-    
-    for r in room["neighbors"]:
-        if r['id'] not in visited:
-            queue.put(get_state(r["id"]))
-            visited.append(r['id'])
-    bfs(queue, visited)
-    
-
-# for q in range(0, queue.qsize()):
-#     print (queue.get()["id"])
-        
-
+    # Searches:
+    bfs(start_id, end_id)
+    dijkstra(start_id, end_id)

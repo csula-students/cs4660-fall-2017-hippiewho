@@ -1,0 +1,10 @@
+{
+    "action": "Dire Tombs",
+    "id": "44dfaae131fa9d0a541c3eb790b57b00",
+    "event":
+    {
+        "effect": 0,
+        "name": "Idle",
+        "description": "Nohting happens"
+    }
+}
