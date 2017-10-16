@@ -11,8 +11,10 @@ TODO: implement Dijkstra utilizing the path with highest effect number
 """
 
 import json
-import codecs
-import Queue
+try:
+    import Queue as q
+except ImportError:
+    import queue as q
 
 # http lib import for Python 2 and 3: alternative 4
 try:
@@ -55,7 +57,7 @@ def __json_request(target_url, body):
 def bfs(start_id, end_id):
     visited = []
     edges = {}
-    queue = Queue.Queue()
+    queue = q.Queue()
     parents = {}
 
     queue.put(start_id);
@@ -95,7 +97,7 @@ def dijkstra(start_id, end_id):
     visited = []
     # Edges of neigbors - { node_to : {node_from , current_weight) }
     edges = {}
-    queue = Queue.PriorityQueue()
+    queue = q.PriorityQueue()
     
     queue.put(start_id)
 
