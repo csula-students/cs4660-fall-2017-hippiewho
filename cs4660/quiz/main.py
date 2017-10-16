@@ -153,7 +153,7 @@ def print_path(path, end_id):
 
         damage += effect
 
-        print("Moved From %s to %s. %s and caused %i damage." % (name_of_current_room, name_of_next_room, description, effect))
+        print("Moved From %s (ID: %s) to %s (ID: %s). %s and caused %i damage." % (name_of_current_room, from_id, name_of_next_room, to_id, description, effect))
         
     print("\nTotal Damage Taken: %i \n" % damage)
 

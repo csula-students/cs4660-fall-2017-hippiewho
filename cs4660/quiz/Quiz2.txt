@@ -1,0 +1,19 @@
+Link:
+https://github.com/csula-students/cs4660-fall-2017-hippiewho/blob/Quiz-2/cs4660/quiz/main.py
+
+Moved From Empty Room (ID: 7f3dc077574c013d98b2de8f735058b4) to Dire Tombs (ID: 44dfaae131fa9d0a541c3eb790b57b00). Nohting happens and caused 0 damage.
+Moved From Dire Tombs (ID: 44dfaae131fa9d0a541c3eb790b57b00) to Dire Tombs (ID: 15fd980b830cd4aa5d518e3df71aa6b1). Nohting happens and caused 0 damage.
+Moved From Dire Tombs (ID: 15fd980b830cd4aa5d518e3df71aa6b1) to Chamber (ID: 83bb5112a32d2fe8790e7a9df8a152ae). Nothing happens and caused 0 damage.
+Moved From Chamber (ID: 83bb5112a32d2fe8790e7a9df8a152ae) to Dark Room (ID: f1f131f647621a4be7c71292e79613f9). Turns out lump was a dwarf sleeping. He strikes and attacks you! and caused -30 damage.
+
+Total Damage Taken: -30
+
+Moved From Empty Room (ID: 7f3dc077574c013d98b2de8f735058b4) to Dire Tombs (ID: 44dfaae131fa9d0a541c3eb790b57b00). Nohting happens and caused 0 damage.
+Moved From Dire Tombs (ID: 44dfaae131fa9d0a541c3eb790b57b00) to Dire Tombs (ID: 15fd980b830cd4aa5d518e3df71aa6b1). Nohting happens and caused 0 damage.
+Moved From Dire Tombs (ID: 15fd980b830cd4aa5d518e3df71aa6b1) to Room with cage (ID: 66d2a976b926dfe017a065dc18f6c0c9). You found a healing potion in the cage! and caused 20 damage.
+Moved From Room with cage (ID: 66d2a976b926dfe017a065dc18f6c0c9) to Dark Room (ID: 3bede4939521345dde88f45b814bdec4). You heard a wisper from the darkness. It drives you insane and caused -10 damage.
+Moved From Dark Room (ID: 3bede4939521345dde88f45b814bdec4) to Dark Room (ID: 2753858b2c893e08e33239242a3de5fd). You stare into the darkness. Nothing happens and caused 0 damage.
+Moved From Dark Room (ID: 2753858b2c893e08e33239242a3de5fd) to Dark Room (ID: 02e3bb466319aa0cd87a0ff4c3e38b4e). You stare into the darkness. Nothing happens and caused 0 damage.
+Moved From Dark Room (ID: 02e3bb466319aa0cd87a0ff4c3e38b4e) to Dark Room (ID: f1f131f647621a4be7c71292e79613f9). Turns out lump was a dwarf sleeping. He strikes and attacks you! and caused -30 damage.
+
+Total Damage Taken: -20
