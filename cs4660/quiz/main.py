@@ -152,9 +152,11 @@ def print_path(path, end_id):
         description = current_transition_state['event']['description']
 
         damage += effect
-
-        print("Moved From %s (ID: %s) to %s (ID: %s). %s and caused %i damage." % (name_of_current_room, from_id, name_of_next_room, to_id, description, effect))
-        
+        if effect <= 0 :
+            print("Moved From %s (ID: %s) to %s (ID: %s). %s and caused %i damage." % (name_of_current_room, from_id, name_of_next_room, to_id, description, effect))
+        elif effect > 0 :
+            print("Moved From %s (ID: %s) to %s (ID: %s). %s You've recovered %i HP." % (name_of_current_room, from_id, name_of_next_room, to_id, description, effect))
+            
     print("\nTotal Damage Taken: %i \n" % damage)
 
 if __name__ == "__main__":
