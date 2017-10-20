@@ -36,7 +36,6 @@ def construct_graph_from_file(graph, file_path):
     2. for each following line (from second line to last line), add them as edge to graph
     3. return the graph
     """
-
     file = open(file_path)
     text = file.read()
     lines = text.split("\n")
@@ -89,7 +88,6 @@ class Edge(object):
     def __hash__(self):
         return hash((self.from_node, self.to_node, self.weight))
 
-
 class AdjacencyList(object):
     """
     AdjacencyList is one of the graph representation which uses adjacency list to
@@ -141,6 +139,11 @@ class AdjacencyList(object):
         else:
             return False
 
+    def distance(self, node_1, node_2):
+        for current in self.adjacency_list[node_1]:
+            if current.to_node == node_2:
+                return current.weight
+
 class AdjacencyMatrix(object):
     def __init__(self):
         # adjacency_matrix should be a two dimensions array of numbers that
@@ -173,10 +176,11 @@ class AdjacencyMatrix(object):
             self.nodes.append(node)
             for i in self.adjacency_matrix:
                 i.append(None)
-            #self.adjacency_matrix.append([None] * len(self.nodes))
+            self.adjacency_matrix.append([None] * len(self.nodes))
             return True
         else:
             return False
+        
 
     def remove_node(self, node):
         if node in self.nodes:
@@ -210,7 +214,10 @@ class AdjacencyMatrix(object):
         """helper method to find node index"""
         return self.nodes.index(node)
 
-
+    def distance(self, node_1, node_2):
+        if self.adjacency_matrix[self.__get_node_index(node_1)][self.__get_node_index(node_2)]:
+            return self.adjacency_matrix[self.__get_node_index(node_1)][self.__get_node_index(node_2)]
+            
 class ObjectOriented(object):
     """ObjectOriented defines the edges and nodes as both list"""
     def __init__(self):
@@ -263,3 +270,8 @@ class ObjectOriented(object):
             return True
         else:
             return False
+
+    def distance(self, node_1, node_2):
+        for i in self.edges:
+            if i.to_node == node_1 and i.to_node == node_2:
+                return i.weight
