@@ -7,6 +7,8 @@ try:
 except ImportError:
     import queue as q
 
+from graph import graph as g
+
 def bfs(graph, initial_node, dest_node):
     """
     Breadth First Search
@@ -127,28 +129,32 @@ def dijkstra_search(graph, initial_node, dest_node):
                 visited.append(neighbor_node)
 
                 current_cost = graph.distance(current_node, neighbor_node)
-
                 if neighbor_node not in edges:
-                    edges[neighbor_node] = (current_node, current_cost + cost)
-                elif neighbor_node in edges and (edges[neighbor_node][1] < (current_cost + cost)):
-                    edges[neighbor_node] = (current_node, current_cost + edges[neighbor_node][1])
+                    edges[neighbor_node] = (current_node, current_cost)
+                elif neighbor_node in edges and edges[neighbor_node][1] > current_cost:
+                    edges[neighbor_node] = (current_node, current_cost)
 
     final_paths = []
     to_node = dest_node
     from_node = edges[to_node][0]
-    final_paths.append(to_node)
 
     # {  to_node  :  from_node , weight)  }
     while from_node != initial_node:
-        final_paths.append(from_node)
+        final_paths.append(g.Edge(from_node, to_node, graph.distance(from_node, to_node)))
 
         to_node = from_node
         from_node = edges[to_node][0]
+        
         if from_node == initial_node:
-            final_paths.append(from_node)
+            final_paths.append(g.Edge(from_node, to_node, graph.distance(from_node, to_node)))
             continue
-
-    return final_paths.reverse()
+        
+    print "-----"
+    for i in final_paths:
+        print i
+    print "-----"
+    final_paths.reverse()
+    return final_paths
 
 def a_star_search(graph, initial_node, dest_node):
     """
