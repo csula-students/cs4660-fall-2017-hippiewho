@@ -3,7 +3,7 @@ utils package is for some quick utility methods
 
 such as parsing
 """
-import graph.graph
+import graph
 
 
 class Tile(object):
